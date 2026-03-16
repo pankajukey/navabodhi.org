@@ -26,7 +26,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     /* ── Reset & Base ───────────────────────────────────────────── */
@@ -50,11 +50,59 @@
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'Inter', 'Noto Sans Devanagari', -apple-system, BlinkMacSystemFont, sans-serif;
       color: var(--text-dark);
       background: var(--cream);
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
+    }
+
+    /* ── Language Toggle ──────────────────────────────────────────── */
+    .lang-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 10px 20px;
+      background: rgba(44, 24, 16, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .lang-toggle {
+      display: flex;
+      gap: 2px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 8px;
+      padding: 3px;
+    }
+
+    .lang-btn {
+      border: none;
+      background: transparent;
+      color: rgba(255,255,255,0.7);
+      font-family: 'Inter', 'Noto Sans Devanagari', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      letter-spacing: 0.5px;
+    }
+
+    .lang-btn:hover {
+      color: rgba(255,255,255,0.9);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .lang-btn.active {
+      background: var(--saffron);
+      color: #fff;
     }
 
     /* ── Hero Section ──────────────────────────────────────────── */
@@ -492,8 +540,6 @@
       box-shadow: 0 8px 24px rgba(232,134,10,0.3);
     }
 
-    /* outline class removed — all buttons use primary */
-
     .btn-cta svg {
       width: 20px;
       height: 20px;
@@ -643,6 +689,15 @@
 </head>
 <body>
 
+  <!-- ═══ LANGUAGE TOGGLE ═══ -->
+  <div class="lang-bar">
+    <div class="lang-toggle">
+      <button class="lang-btn active" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="hi">हिंदी</button>
+      <button class="lang-btn" data-lang="mr">मराठी</button>
+    </div>
+  </div>
+
   <!-- ═══ HERO ═══ -->
   <section class="hero">
     <div class="hero-bg"></div>
@@ -650,17 +705,17 @@
     <div class="hero-content">
       <div class="hero-brand">NAVA BODHI SANGHA <svg class="symbol-svg" viewBox="0 0 100 100" width="28" height="28" style="vertical-align:middle;margin-left:8px;"><circle cx="50" cy="50" r="46" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="5"/><circle cx="50" cy="50" r="8" fill="rgba(255,255,255,0.9)"/><line x1="50" y1="4" x2="50" y2="96" stroke="rgba(255,255,255,0.9)" stroke-width="4" stroke-linecap="round"/><line x1="4" y1="50" x2="96" y2="50" stroke="rgba(255,255,255,0.9)" stroke-width="4" stroke-linecap="round"/><line x1="17" y1="17" x2="83" y2="83" stroke="rgba(255,255,255,0.9)" stroke-width="4" stroke-linecap="round"/><line x1="83" y1="17" x2="17" y2="83" stroke="rgba(255,255,255,0.9)" stroke-width="4" stroke-linecap="round"/></svg></div>
       <h1>Sangha</h1>
-      <p class="hero-tagline">Your Buddhist Companion</p>
-      <p class="hero-sub">Daily wisdom, mantras, stories, and teachings from all five Buddhist traditions — in English, Hindi, and Marathi.</p>
+      <p class="hero-tagline" data-i18n="heroTagline">Your Buddhist Companion</p>
+      <p class="hero-sub" data-i18n="heroSub">Daily wisdom, mantras, stories, and teachings from all five Buddhist traditions — in English, Hindi, and Marathi.</p>
       <div class="hero-divider"></div>
       <div class="download-buttons">
         <a href="/app" class="btn-download primary">
           <svg viewBox="0 0 24 24"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
-          App Store
+          <span data-i18n="btnAppStore">App Store</span>
         </a>
         <a href="/app" class="btn-download primary">
           <svg viewBox="0 0 24 24"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 1.33c.576.334.576 1.17 0 1.504l-2.302 1.33-2.505-2.505 2.505-2.659zM5.864 2.658L16.8 8.991l-2.302 2.302L5.864 2.658z"/></svg>
-          Google Play
+          <span data-i18n="btnGooglePlay">Google Play</span>
         </a>
       </div>
     </div>
@@ -672,40 +727,40 @@
   <!-- ═══ FEATURES — Three Pathways ═══ -->
   <section class="features">
     <div class="section-inner fade-in">
-      <div class="section-label">Begin Your Journey</div>
-      <div class="section-title">Everything you need on the path</div>
-      <div class="section-desc">Six mindful spaces — each designed to deepen your practice, one moment at a time.</div>
+      <div class="section-label" data-i18n="featLabel">Begin Your Journey</div>
+      <div class="section-title" data-i18n="featTitle">Everything you need on the path</div>
+      <div class="section-desc" data-i18n="featDesc">Six mindful spaces — each designed to deepen your practice, one moment at a time.</div>
 
       <div class="features-grid">
         <div class="feature-card">
           <div class="feature-icon" style="background: var(--saffron-pale);"><img src="assets/images/dharma.webp" alt="Dharmachakra"></div>
-          <h3>Daily Teachings</h3>
-          <p>Start each day with a curated teaching from the Buddha and great masters across all traditions.</p>
+          <h3 data-i18n="feat1Title">Daily Teachings</h3>
+          <p data-i18n="feat1Desc">Start each day with a curated teaching from the Buddha and great masters across all traditions.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon" style="background: #E8F5E9;"><img src="assets/images/lotus.webp" alt="Lotus"></div>
-          <h3>Wisdom Feed</h3>
-          <p>A contemplative stream of timeless Buddhist quotes — like, save, and share the ones that move you.</p>
+          <h3 data-i18n="feat2Title">Wisdom Feed</h3>
+          <p data-i18n="feat2Desc">A contemplative stream of timeless Buddhist quotes — like, save, and share the ones that move you.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon" style="background: #FFF3E0;"><img src="assets/images/book.webp" alt="Book"></div>
-          <h3>Story Library</h3>
-          <p>Jataka tales, Zen koans, and parables from every tradition — wisdom through storytelling.</p>
+          <h3 data-i18n="feat3Title">Story Library</h3>
+          <p data-i18n="feat3Desc">Jataka tales, Zen koans, and parables from every tradition — wisdom through storytelling.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon" style="background: #F3E5F5;"><img src="assets/images/stupa.webp" alt="Stupa"></div>
-          <h3>Sacred Gallery</h3>
-          <p>122 original Buddhist artworks — temples, mandalas, and sacred imagery. Download and share.</p>
+          <h3 data-i18n="feat4Title">Sacred Gallery</h3>
+          <p data-i18n="feat4Desc">122 original Buddhist artworks — temples, mandalas, and sacred imagery. Download and share.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon" style="background: #E3F2FD;"><img src="assets/images/mala.webp" alt="Prayer Beads"></div>
-          <h3>Prayers &amp; Mantras</h3>
-          <p>Sacred chants with audio playback in 5 voices — Pali text, transliteration, and meaning included.</p>
+          <h3 data-i18n="feat5Title">Prayers &amp; Mantras</h3>
+          <p data-i18n="feat5Desc">Sacred chants with audio playback in 5 voices — Pali text, transliteration, and meaning included.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon" style="background: #FFEBEE;"><img src="assets/images/calendar.webp" alt="Calendar"></div>
-          <h3>Buddhist Calendar</h3>
-          <p>Never miss Vesak, Asalha Puja, or Ambedkar Jayanti — festivals from all five traditions.</p>
+          <h3 data-i18n="feat6Title">Buddhist Calendar</h3>
+          <p data-i18n="feat6Desc">Never miss Vesak, Asalha Puja, or Ambedkar Jayanti — festivals from all five traditions.</p>
         </div>
       </div>
     </div>
@@ -714,30 +769,30 @@
   <!-- ═══ APP SHOWCASE ═══ -->
   <section class="showcase">
     <div class="section-inner fade-in">
-      <div class="section-label">Inside the App</div>
-      <div class="section-title">Designed for mindful moments</div>
-      <div class="section-desc" style="margin: 0 auto;">A calm, distraction-free interface in saffron and cream — crafted for reflection, not reaction.</div>
+      <div class="section-label" data-i18n="showLabel">Inside the App</div>
+      <div class="section-title" data-i18n="showTitle">Designed for mindful moments</div>
+      <div class="section-desc" style="margin: 0 auto;" data-i18n="showDesc">A calm, distraction-free interface in saffron and cream — crafted for reflection, not reaction.</div>
 
       <div class="phone-mockups">
         <div class="phone-frame">
           <div class="phone-screen saffron-top">
             <div class="screen-icon"><img src="assets/images/dharma.webp" alt="Today"></div>
-            <div class="screen-label">Today</div>
-            <div class="screen-desc">Daily teaching, festivals, and your personal greeting — all in one place.</div>
+            <div class="screen-label" data-i18n="phone1Label">Today</div>
+            <div class="screen-desc" data-i18n="phone1Desc">Daily teaching, festivals, and your personal greeting — all in one place.</div>
           </div>
         </div>
         <div class="phone-frame">
           <div class="phone-screen gold-top">
             <div class="screen-icon"><img src="assets/images/lotus.webp" alt="Wisdom"></div>
-            <div class="screen-label">Wisdom</div>
-            <div class="screen-desc">Swipe through timeless quotes. Like, save, and share as beautiful images.</div>
+            <div class="screen-label" data-i18n="phone2Label">Wisdom</div>
+            <div class="screen-desc" data-i18n="phone2Desc">Swipe through timeless quotes. Like, save, and share as beautiful images.</div>
           </div>
         </div>
         <div class="phone-frame">
           <div class="phone-screen zen-top">
             <div class="screen-icon"><img src="assets/images/mala.webp" alt="Mantras"></div>
-            <div class="screen-label">Mantras</div>
-            <div class="screen-desc">Listen to sacred chants in 5 voices with Pali text and meaning.</div>
+            <div class="screen-label" data-i18n="phone3Label">Mantras</div>
+            <div class="screen-desc" data-i18n="phone3Desc">Listen to sacred chants in 5 voices with Pali text and meaning.</div>
           </div>
         </div>
       </div>
@@ -747,16 +802,16 @@
   <!-- ═══ TRADITIONS ═══ -->
   <section class="traditions">
     <div class="section-inner fade-in">
-      <div class="section-label">All Traditions Welcome</div>
-      <div class="section-title">One app, five paths</div>
-      <div class="section-desc" style="margin: 0 auto;">Sangha honours the full spectrum of Buddhist thought — from the Pali Canon to Dr. Ambedkar's Navayana.</div>
+      <div class="section-label" data-i18n="tradLabel">All Traditions Welcome</div>
+      <div class="section-title" data-i18n="tradTitle">One app, five paths</div>
+      <div class="section-desc" style="margin: 0 auto;" data-i18n="tradDesc">Sangha honours the full spectrum of Buddhist thought — from the Pali Canon to Dr. Ambedkar's Navayana.</div>
 
       <div class="traditions-grid">
-        <span class="tradition-pill theravada">☸ Theravada</span>
-        <span class="tradition-pill mahayana">🪷 Mahayana</span>
-        <span class="tradition-pill zen">🍃 Zen</span>
-        <span class="tradition-pill tibetan">🏔 Tibetan</span>
-        <span class="tradition-pill navayana">💙 Navayana</span>
+        <span class="tradition-pill theravada" data-i18n="tradTheravada">☸ Theravada</span>
+        <span class="tradition-pill mahayana" data-i18n="tradMahayana">🪷 Mahayana</span>
+        <span class="tradition-pill zen" data-i18n="tradZen">🍃 Zen</span>
+        <span class="tradition-pill tibetan" data-i18n="tradTibetan">🏔 Tibetan</span>
+        <span class="tradition-pill navayana" data-i18n="tradNavayana">💙 Navayana</span>
       </div>
     </div>
   </section>
@@ -764,27 +819,27 @@
   <!-- ═══ DAILY WISDOM QUOTE ═══ -->
   <section class="wisdom">
     <div class="fade-in">
-      <div class="wisdom-label">Daily Wisdom</div>
-      <blockquote class="wisdom-quote">
+      <div class="wisdom-label" data-i18n="wisdomLabel">Daily Wisdom</div>
+      <blockquote class="wisdom-quote" data-i18n="wisdomQuote">
         "Peace comes from within. Do not seek it without."
       </blockquote>
-      <div class="wisdom-attr">— Gautama Buddha</div>
+      <div class="wisdom-attr" data-i18n="wisdomAttr">— Gautama Buddha</div>
     </div>
   </section>
 
   <!-- ═══ FINAL CTA ═══ -->
   <section class="cta-section">
     <div class="section-inner fade-in">
-      <div class="section-title">Begin your journey today</div>
-      <div class="section-desc">Free to download. No ads. No distractions. Available in English, Hindi, and Marathi.</div>
+      <div class="section-title" data-i18n="ctaTitle">Begin your journey today</div>
+      <div class="section-desc" data-i18n="ctaDesc">Free to download. No ads. No distractions. Available in English, Hindi, and Marathi.</div>
       <div class="cta-buttons">
         <a href="/app" class="btn-cta primary">
           <svg viewBox="0 0 24 24"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
-          Download for iOS
+          <span data-i18n="ctaBtnIos">Download for iOS</span>
         </a>
         <a href="/app" class="btn-cta primary">
           <svg viewBox="0 0 24 24"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 1.33c.576.334.576 1.17 0 1.504l-2.302 1.33-2.505-2.505 2.505-2.659zM5.864 2.658L16.8 8.991l-2.302 2.302L5.864 2.658z"/></svg>
-          Download for Android
+          <span data-i18n="ctaBtnAndroid">Download for Android</span>
         </a>
       </div>
     </div>
@@ -795,7 +850,7 @@
     <div class="footer-inner">
       <div>
         <div class="footer-brand">Nava Bodhi Sangha <svg viewBox="0 0 100 100" width="16" height="16" style="vertical-align:middle;margin-left:4px;opacity:0.6;"><circle cx="50" cy="50" r="46" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="5"/><circle cx="50" cy="50" r="8" fill="rgba(255,255,255,0.8)"/><line x1="50" y1="4" x2="50" y2="96" stroke="rgba(255,255,255,0.8)" stroke-width="4"/><line x1="4" y1="50" x2="96" y2="50" stroke="rgba(255,255,255,0.8)" stroke-width="4"/><line x1="17" y1="17" x2="83" y2="83" stroke="rgba(255,255,255,0.8)" stroke-width="4"/><line x1="83" y1="17" x2="17" y2="83" stroke="rgba(255,255,255,0.8)" stroke-width="4"/></svg></div>
-        <div class="footer-tagline">New Awakening Community</div>
+        <div class="footer-tagline" data-i18n="footerTagline">New Awakening Community</div>
         <div class="footer-social">
           <a href="https://instagram.com/navabodhisangha" target="_blank" rel="noopener">Instagram</a>
           <a href="https://x.com/navabodhisangha" target="_blank" rel="noopener">X / Twitter</a>
@@ -804,28 +859,230 @@
       </div>
       <div class="footer-links">
         <div class="footer-col">
-          <h4>App</h4>
-          <a href="/app">Download</a>
-          <a href="mailto:helpdesk@navabodhi.org">Support</a>
+          <h4 data-i18n="footerApp">App</h4>
+          <a href="/app" data-i18n="footerDownload">Download</a>
+          <a href="mailto:helpdesk@navabodhi.org" data-i18n="footerSupport">Support</a>
         </div>
         <div class="footer-col">
-          <h4>Legal</h4>
-          <a href="https://pankajukey.github.io/sangha-privacy/" target="_blank" rel="noopener">Privacy Policy</a>
+          <h4 data-i18n="footerLegal">Legal</h4>
+          <a href="https://pankajukey.github.io/sangha-privacy/" target="_blank" rel="noopener" data-i18n="footerPrivacy">Privacy Policy</a>
         </div>
         <div class="footer-col">
-          <h4>Contact</h4>
+          <h4 data-i18n="footerContact">Contact</h4>
           <a href="mailto:helpdesk@navabodhi.org">helpdesk@navabodhi.org</a>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>&copy; 2026 Nava Bodhi Sangha. All rights reserved.</span>
+      <span data-i18n="footerCopy">&copy; 2026 Nava Bodhi Sangha. All rights reserved.</span>
       <span>www.navabodhi.org</span>
     </div>
   </footer>
 
-  <!-- ═══ Scroll animation ═══ -->
+  <!-- ═══ Translation Engine + Scroll Animation ═══ -->
   <script>
+    // ── Translations ──
+    const T = {
+      en: {
+        heroTagline: "Your Buddhist Companion",
+        heroSub: "Daily wisdom, mantras, stories, and teachings from all five Buddhist traditions — in English, Hindi, and Marathi.",
+        btnAppStore: "App Store",
+        btnGooglePlay: "Google Play",
+        featLabel: "BEGIN YOUR JOURNEY",
+        featTitle: "Everything you need on the path",
+        featDesc: "Six mindful spaces — each designed to deepen your practice, one moment at a time.",
+        feat1Title: "Daily Teachings",
+        feat1Desc: "Start each day with a curated teaching from the Buddha and great masters across all traditions.",
+        feat2Title: "Wisdom Feed",
+        feat2Desc: "A contemplative stream of timeless Buddhist quotes — like, save, and share the ones that move you.",
+        feat3Title: "Story Library",
+        feat3Desc: "Jataka tales, Zen koans, and parables from every tradition — wisdom through storytelling.",
+        feat4Title: "Sacred Gallery",
+        feat4Desc: "122 original Buddhist artworks — temples, mandalas, and sacred imagery. Download and share.",
+        feat5Title: "Prayers & Mantras",
+        feat5Desc: "Sacred chants with audio playback in 5 voices — Pali text, transliteration, and meaning included.",
+        feat6Title: "Buddhist Calendar",
+        feat6Desc: "Never miss Vesak, Asalha Puja, or Ambedkar Jayanti — festivals from all five traditions.",
+        showLabel: "INSIDE THE APP",
+        showTitle: "Designed for mindful moments",
+        showDesc: "A calm, distraction-free interface in saffron and cream — crafted for reflection, not reaction.",
+        phone1Label: "Today",
+        phone1Desc: "Daily teaching, festivals, and your personal greeting — all in one place.",
+        phone2Label: "Wisdom",
+        phone2Desc: "Swipe through timeless quotes. Like, save, and share as beautiful images.",
+        phone3Label: "Mantras",
+        phone3Desc: "Listen to sacred chants in 5 voices with Pali text and meaning.",
+        tradLabel: "ALL TRADITIONS WELCOME",
+        tradTitle: "One app, five paths",
+        tradDesc: "Sangha honours the full spectrum of Buddhist thought — from the Pali Canon to Dr. Ambedkar's Navayana.",
+        tradTheravada: "☸ Theravada",
+        tradMahayana: "🪷 Mahayana",
+        tradZen: "🍃 Zen",
+        tradTibetan: "🏔 Tibetan",
+        tradNavayana: "💙 Navayana",
+        wisdomLabel: "DAILY WISDOM",
+        wisdomQuote: "\u201CPeace comes from within. Do not seek it without.\u201D",
+        wisdomAttr: "— Gautama Buddha",
+        ctaTitle: "Begin your journey today",
+        ctaDesc: "Free to download. No ads. No distractions. Available in English, Hindi, and Marathi.",
+        ctaBtnIos: "Download for iOS",
+        ctaBtnAndroid: "Download for Android",
+        footerTagline: "New Awakening Community",
+        footerApp: "APP",
+        footerDownload: "Download",
+        footerSupport: "Support",
+        footerLegal: "LEGAL",
+        footerPrivacy: "Privacy Policy",
+        footerContact: "CONTACT",
+        footerCopy: "\u00A9 2026 Nava Bodhi Sangha. All rights reserved."
+      },
+      hi: {
+        heroTagline: "आपका बौद्ध साथी",
+        heroSub: "सभी पाँच बौद्ध परंपराओं से दैनिक ज्ञान, मंत्र, कथाएँ और शिक्षाएँ — हिंदी, अंग्रेज़ी और मराठी में।",
+        btnAppStore: "App Store",
+        btnGooglePlay: "Google Play",
+        featLabel: "अपनी यात्रा शुरू करें",
+        featTitle: "मार्ग पर आपको जो कुछ भी चाहिए",
+        featDesc: "छह सचेतन स्थान — प्रत्येक आपकी साधना को गहरा करने के लिए, एक-एक पल करके।",
+        feat1Title: "दैनिक शिक्षाएँ",
+        feat1Desc: "हर दिन की शुरुआत बुद्ध और सभी परंपराओं के महान गुरुओं की चुनी हुई शिक्षा से करें।",
+        feat2Title: "ज्ञान फ़ीड",
+        feat2Desc: "शाश्वत बौद्ध उद्धरणों की एक चिंतनशील धारा — जो आपको प्रेरित करें, उन्हें सहेजें और साझा करें।",
+        feat3Title: "कथा संग्रह",
+        feat3Desc: "जातक कथाएँ, ज़ेन कोआन और हर परंपरा के दृष्टांत — कहानियों के माध्यम से ज्ञान।",
+        feat4Title: "पवित्र गैलरी",
+        feat4Desc: "122 मूल बौद्ध कलाकृतियाँ — मंदिर, मंडल और पवित्र चित्र। डाउनलोड और साझा करें।",
+        feat5Title: "प्रार्थनाएँ और मंत्र",
+        feat5Desc: "5 स्वरों में ऑडियो के साथ पवित्र मंत्र — पालि पाठ, लिप्यंतरण और अर्थ सहित।",
+        feat6Title: "बौद्ध कैलेंडर",
+        feat6Desc: "वेसाक, आषाढ़ पूजा या अंबेडकर जयंती — पाँचों परंपराओं के त्योहार कभी न चूकें।",
+        showLabel: "ऐप के अंदर",
+        showTitle: "सचेतन क्षणों के लिए डिज़ाइन किया गया",
+        showDesc: "केसरिया और क्रीम रंग में एक शांत, ध्यान-मुक्त इंटरफ़ेस — चिंतन के लिए बनाया गया।",
+        phone1Label: "आज",
+        phone1Desc: "दैनिक शिक्षा, त्योहार और आपका व्यक्तिगत अभिवादन — सब एक ही जगह।",
+        phone2Label: "ज्ञान",
+        phone2Desc: "शाश्वत उद्धरणों को स्वाइप करें। पसंद करें, सहेजें और सुंदर चित्रों के रूप में साझा करें।",
+        phone3Label: "मंत्र",
+        phone3Desc: "पालि पाठ और अर्थ के साथ 5 स्वरों में पवित्र मंत्र सुनें।",
+        tradLabel: "सभी परंपराओं का स्वागत",
+        tradTitle: "एक ऐप, पाँच मार्ग",
+        tradDesc: "संघ बौद्ध विचार के पूर्ण स्पेक्ट्रम का सम्मान करता है — पालि कैनन से डॉ. अंबेडकर के नवयान तक।",
+        tradTheravada: "☸ थेरवाद",
+        tradMahayana: "🪷 महायान",
+        tradZen: "🍃 ज़ेन",
+        tradTibetan: "🏔 तिब्बती",
+        tradNavayana: "💙 नवयान",
+        wisdomLabel: "दैनिक ज्ञान",
+        wisdomQuote: "\u201Cशांति भीतर से आती है। इसे बाहर मत खोजो।\u201D",
+        wisdomAttr: "— गौतम बुद्ध",
+        ctaTitle: "आज ही अपनी यात्रा शुरू करें",
+        ctaDesc: "डाउनलोड करें — मुफ़्त। कोई विज्ञापन नहीं। कोई भटकाव नहीं। हिंदी, अंग्रेज़ी और मराठी में उपलब्ध।",
+        ctaBtnIos: "iOS के लिए डाउनलोड",
+        ctaBtnAndroid: "Android के लिए डाउनलोड",
+        footerTagline: "नव जागृति समुदाय",
+        footerApp: "ऐप",
+        footerDownload: "डाउनलोड",
+        footerSupport: "सहायता",
+        footerLegal: "कानूनी",
+        footerPrivacy: "गोपनीयता नीति",
+        footerContact: "संपर्क",
+        footerCopy: "\u00A9 2026 नवा बोधि संघ। सर्वाधिकार सुरक्षित।"
+      },
+      mr: {
+        heroTagline: "तुमचा बौद्ध सोबती",
+        heroSub: "सर्व पाच बौद्ध परंपरांमधून दैनिक ज्ञान, मंत्र, कथा आणि शिकवणी — मराठी, हिंदी आणि इंग्रजीमध्ये।",
+        btnAppStore: "App Store",
+        btnGooglePlay: "Google Play",
+        featLabel: "तुमचा प्रवास सुरू करा",
+        featTitle: "मार्गावर तुम्हाला जे काही हवे ते",
+        featDesc: "सहा सजग जागा — प्रत्येक तुमच्या साधनेला खोलवर नेण्यासाठी, एक एक क्षण करत.",
+        feat1Title: "दैनिक शिकवणी",
+        feat1Desc: "दररोजची सुरुवात बुद्ध आणि सर्व परंपरांतील महान गुरूंच्या निवडक शिकवणीने करा.",
+        feat2Title: "ज्ञान फीड",
+        feat2Desc: "शाश्वत बौद्ध सुविचारांचा एक चिंतनशील प्रवाह — जे तुम्हाला प्रेरित करतात ते सेव्ह करा आणि शेअर करा.",
+        feat3Title: "कथा संग्रह",
+        feat3Desc: "जातक कथा, झेन कोआन आणि प्रत्येक परंपरेतील बोधकथा — कथांद्वारे ज्ञान.",
+        feat4Title: "पवित्र गॅलरी",
+        feat4Desc: "122 मूळ बौद्ध कलाकृती — मंदिरे, मंडळ आणि पवित्र चित्रे. डाउनलोड करा आणि शेअर करा.",
+        feat5Title: "प्रार्थना आणि मंत्र",
+        feat5Desc: "5 आवाजांमध्ये ऑडिओसह पवित्र मंत्र — पाली मजकूर, लिप्यंतरण आणि अर्थासह.",
+        feat6Title: "बौद्ध दिनदर्शिका",
+        feat6Desc: "वेसाक, आषाढ पूजा किंवा आंबेडकर जयंती — पाचही परंपरांचे सण कधीही चुकवू नका.",
+        showLabel: "ऐपच्या आत",
+        showTitle: "सजग क्षणांसाठी डिझाइन केलेले",
+        showDesc: "केशरी आणि क्रीम रंगातील एक शांत, विचलन-मुक्त इंटरफेस — चिंतनासाठी बनवलेले.",
+        phone1Label: "आज",
+        phone1Desc: "दैनिक शिकवणी, सण आणि तुमचे वैयक्तिक अभिवादन — सगळे एकाच ठिकाणी.",
+        phone2Label: "ज्ञान",
+        phone2Desc: "शाश्वत सुविचार स्वाइप करा. आवडते, सेव्ह करा आणि सुंदर चित्रे म्हणून शेअर करा.",
+        phone3Label: "मंत्र",
+        phone3Desc: "पाली मजकूर आणि अर्थासह 5 आवाजांमध्ये पवित्र मंत्र ऐका.",
+        tradLabel: "सर्व परंपरांचे स्वागत",
+        tradTitle: "एक ऐप, पाच मार्ग",
+        tradDesc: "संघ बौद्ध विचारांच्या संपूर्ण स्पेक्ट्रमचा सन्मान करतो — पाली कॅनन पासून डॉ. आंबेडकरांच्या नवयान पर्यंत.",
+        tradTheravada: "☸ थेरवाद",
+        tradMahayana: "🪷 महायान",
+        tradZen: "🍃 झेन",
+        tradTibetan: "🏔 तिबेटी",
+        tradNavayana: "💙 नवयान",
+        wisdomLabel: "दैनिक ज्ञान",
+        wisdomQuote: "\u201Cशांती आतून येते. ती बाहेर शोधू नका.\u201D",
+        wisdomAttr: "— गौतम बुद्ध",
+        ctaTitle: "आजच तुमचा प्रवास सुरू करा",
+        ctaDesc: "मोफत डाउनलोड करा. जाहिराती नाहीत. विचलन नाही. मराठी, हिंदी आणि इंग्रजीमध्ये उपलब्ध.",
+        ctaBtnIos: "iOS साठी डाउनलोड",
+        ctaBtnAndroid: "Android साठी डाउनलोड",
+        footerTagline: "नव जागृती समुदाय",
+        footerApp: "ऐप",
+        footerDownload: "डाउनलोड",
+        footerSupport: "मदत",
+        footerLegal: "कायदेशीर",
+        footerPrivacy: "गोपनीयता धोरण",
+        footerContact: "संपर्क",
+        footerCopy: "\u00A9 2026 नवा बोधी संघ. सर्व हक्क राखीव."
+      }
+    };
+
+    // ── Set language ──
+    function setLanguage(lang) {
+      const strings = T[lang];
+      if (!strings) return;
+
+      // Update all data-i18n elements
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (strings[key]) {
+          el.textContent = strings[key];
+        }
+      });
+
+      // Update active button
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+      });
+
+      // Update html lang attribute
+      document.documentElement.lang = lang;
+
+      // Persist choice
+      localStorage.setItem('sangha-lang', lang);
+    }
+
+    // ── Init language from storage or default ──
+    document.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem('sangha-lang') || 'en';
+      if (saved !== 'en') setLanguage(saved);
+
+      // Bind toggle buttons
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          setLanguage(btn.getAttribute('data-lang'));
+        });
+      });
+    });
+
+    // ── Scroll fade-in ──
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
