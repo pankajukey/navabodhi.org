@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Download Sangha — Buddhist Companion App</title>
+
+  <!-- Open Graph (WhatsApp, Facebook, LinkedIn previews) -->
+  <meta property="og:title" content="Sangha — Buddhist Companion App">
+  <meta property="og:description" content="Daily wisdom, prayers, stories, meditation timer & more. Free for all Buddhist traditions.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://navabodhi.org/app">
+  <meta property="og:image" content="https://navabodhi.org/assets/og-image.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sangha — Buddhist Companion App">
+  <meta name="twitter:description" content="Daily wisdom, prayers, stories, meditation timer & more.">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #FAF6EE;
+      color: #2C1810;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .container {
+      text-align: center;
+      max-width: 420px;
+    }
+    .logo {
+      font-size: 48px;
+      margin-bottom: 8px;
+    }
+    h1 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #2C1810;
+      margin-bottom: 4px;
+    }
+    .subtitle {
+      font-size: 15px;
+      color: #6B5B4E;
+      margin-bottom: 32px;
+    }
+    .store-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      padding: 16px 24px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      transition: transform 0.15s;
+    }
+    .store-btn:active { transform: scale(0.97); }
+    .store-btn svg { flex-shrink: 0; }
+    .android {
+      background: #34A853;
+      color: #fff;
+    }
+    .ios {
+      background: #000;
+      color: #fff;
+    }
+    .divider {
+      font-size: 13px;
+      color: #9B8B7E;
+      margin: 8px 0;
+    }
+    .footer {
+      margin-top: 40px;
+      font-size: 12px;
+      color: #9B8B7E;
+    }
+    .footer a { color: #E8860A; text-decoration: none; }
+    .badge {
+      display: inline-block;
+      background: #FEF3E2;
+      color: #E8860A;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 6px;
+      margin-bottom: 24px;
+    }
+  </style>
+
+  <script>
+    // Auto-redirect based on platform (with 1.5s delay for humans to see the page)
+    (function() {
+      var ua = navigator.userAgent || '';
+      var android = /android/i.test(ua);
+      var ios = /iphone|ipad|ipod/i.test(ua);
+
+      if (android) {
+        setTimeout(function() {
+          window.location.href = 'https://play.google.com/store/apps/details?id=com.pankajukey.sangha';
+        }, 1500);
+      } else if (ios) {
+        setTimeout(function() {
+          window.location.href = 'https://testflight.apple.com/join/MVatPncQ';
+        }, 1500);
+      }
+      // Desktop: no redirect, show both buttons
+    })();
+  </script>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">☸</div>
+    <h1>Sangha</h1>
+    <p class="subtitle">Buddhist Companion App</p>
+    <span class="badge">Free &middot; All Traditions</span>
+
+    <a href="https://play.google.com/store/apps/details?id=com.pankajukey.sangha" class="store-btn android">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734c0-.382.218-.72.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333L13.5 12.707zm3.313-1.707L20.5 12l-2.688 1.5-2.555-2.555 2.555-2.555zM5.864 3.455L16.8 9.788l-2.302 2.302L5.864 3.455z"/></svg>
+      Google Play
+    </a>
+
+    <div class="divider">or</div>
+
+    <a href="https://testflight.apple.com/join/MVatPncQ" class="store-btn ios">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      App Store (TestFlight)
+    </a>
+
+    <div class="footer">
+      <p>By <a href="https://navabodhi.org">Nava Bodhi Sangha</a></p>
+      <p style="margin-top: 4px;">Daily wisdom &middot; Prayers &middot; Stories &middot; Meditation &middot; Gallery</p>
+    </div>
+  </div>
+</body>
+</html>
