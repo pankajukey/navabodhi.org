@@ -3,49 +3,173 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nava Bodhi Sangha</title>
-  <meta name="description" content="Nava Bodhi Sangha — New Awakening Community. Buddhist companion app, content, and community.">
+  <title>Nava Bodhi Sangha — Coming Soon</title>
+  <meta name="description" content="Nava Bodhi Sangha — New Awakening Community. Buddhist companion app for daily wisdom, prayers, stories, and meditation.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Nava Bodhi Sangha">
+  <meta property="og:description" content="New Awakening Community — Buddhist companion app coming soon.">
+  <meta property="og:image" content="https://navabodhi.org/assets/hero-bg.webp">
+  <meta property="og:url" content="https://navabodhi.org">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: #FAF6EE;
-      color: #2C1810;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #fff;
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Hero background */
+    .hero-bg {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: url('assets/hero-bg.webp') center center / cover no-repeat;
+      z-index: 0;
+    }
+
+    /* Dark overlay for text readability */
+    .hero-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(
+        180deg,
+        rgba(0,0,0,0.35) 0%,
+        rgba(0,0,0,0.25) 40%,
+        rgba(0,0,0,0.45) 100%
+      );
+      z-index: 1;
+    }
+
+    /* Content */
+    .content {
+      position: relative;
+      z-index: 2;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 24px;
+      padding: 32px 24px;
       text-align: center;
     }
-    .logo { font-size: 64px; margin-bottom: 16px; }
-    h1 { font-size: 32px; font-weight: 700; margin-bottom: 8px; }
-    .tagline { font-size: 16px; color: #6B5B4E; margin-bottom: 32px; }
-    .app-link {
+
+    /* Brand name */
+    .brand {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 48px;
+    }
+    .brand .symbol {
+      font-size: 16px;
+      margin-left: 6px;
+      opacity: 0.7;
+    }
+
+    /* Main heading */
+    h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 52px;
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    }
+
+    .tagline {
+      font-size: 17px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 48px;
+      max-width: 480px;
+      line-height: 1.5;
+    }
+
+    /* Decorative divider */
+    .divider {
+      width: 60px;
+      height: 1px;
+      background: rgba(255,255,255,0.3);
+      margin-bottom: 48px;
+    }
+
+    /* Coming Soon badge */
+    .coming-soon {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 32px;
+    }
+
+    /* CTA button */
+    .cta {
       display: inline-block;
-      background: #E8860A;
+      background: rgba(232,134,10,0.9);
       color: #fff;
       text-decoration: none;
-      padding: 14px 32px;
-      border-radius: 10px;
-      font-size: 16px;
+      padding: 14px 36px;
+      border-radius: 8px;
+      font-size: 15px;
       font-weight: 600;
+      letter-spacing: 0.5px;
+      transition: background 0.2s, transform 0.15s;
+      backdrop-filter: blur(4px);
     }
+    .cta:hover { background: rgba(232,134,10,1); transform: translateY(-1px); }
+
+    /* Footer */
     .footer {
-      margin-top: 48px;
+      position: fixed;
+      bottom: 24px;
+      left: 0; right: 0;
+      text-align: center;
+      z-index: 2;
       font-size: 12px;
-      color: #9B8B7E;
+      color: rgba(255,255,255,0.4);
+    }
+    .footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+
+    /* Mobile */
+    @media (max-width: 600px) {
+      h1 { font-size: 36px; }
+      .tagline { font-size: 15px; }
+      .brand { font-size: 12px; letter-spacing: 3px; margin-bottom: 36px; }
     }
   </style>
 </head>
 <body>
-  <div class="logo">☸</div>
-  <h1>Nava Bodhi Sangha</h1>
-  <p class="tagline">New Awakening Community</p>
-  <a href="/app" class="app-link">Download Sangha App</a>
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+
+  <div class="content">
+    <div class="brand">NAVA BODHI SANGHA <span class="symbol">☸</span></div>
+
+    <h1>Find Your Inner Peace</h1>
+    <p class="tagline">Daily wisdom, ancient prayers, timeless stories, and guided meditation — for all Buddhist traditions.</p>
+
+    <div class="divider"></div>
+
+    <p class="coming-soon">Coming Soon</p>
+
+    <a href="/app" class="cta">Download the App</a>
+  </div>
+
   <div class="footer">
-    <p>&copy; 2026 Nava Bodhi Sangha &middot; navabodhi.org</p>
+    <p>&copy; 2026 Nava Bodhi Sangha &middot; <a href="mailto:admin@navabodhi.org">admin@navabodhi.org</a></p>
   </div>
 </body>
 </html>
