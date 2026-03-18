@@ -515,6 +515,100 @@
       margin-bottom: 32px;
     }
 
+    /* ── Beta Signup ───────────────────────────────────────────── */
+    .beta-section {
+      background: var(--text-dark);
+      color: var(--cream);
+      text-align: center;
+      padding: 80px 24px;
+    }
+    .beta-section .section-label { color: var(--saffron-light); }
+    .beta-section .section-title { color: var(--cream); margin-bottom: 12px; }
+    .beta-section .section-desc { color: rgba(255,255,255,0.7); margin: 0 auto 36px; }
+    .beta-form {
+      max-width: 440px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .beta-form input[type="text"],
+    .beta-form input[type="email"],
+    .beta-form input[type="tel"] {
+      width: 100%;
+      padding: 14px 18px;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 10px;
+      background: rgba(255,255,255,0.08);
+      color: var(--cream);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .beta-form input::placeholder { color: rgba(255,255,255,0.4); }
+    .beta-form input:focus { border-color: var(--saffron); }
+    .device-toggle {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+    }
+    .device-btn {
+      padding: 10px 24px;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 20px;
+      background: transparent;
+      color: rgba(255,255,255,0.6);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .device-btn.active {
+      background: var(--saffron);
+      border-color: var(--saffron);
+      color: white;
+      font-weight: 600;
+    }
+    .checkbox-row {
+      text-align: left;
+    }
+    .checkbox-row label {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: rgba(255,255,255,0.7);
+      font-size: 13px;
+      cursor: pointer;
+    }
+    .checkbox-row input[type="checkbox"] {
+      margin-top: 2px;
+      accent-color: var(--saffron);
+    }
+    .beta-submit {
+      width: 100%;
+      justify-content: center;
+      margin-top: 8px;
+    }
+    .beta-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    .beta-success {
+      color: #4CAF50;
+      font-size: 16px;
+      padding: 16px;
+      background: rgba(76,175,80,0.1);
+      border-radius: 10px;
+    }
+    .beta-error {
+      color: #f44336;
+      font-size: 14px;
+      padding: 12px;
+      background: rgba(244,67,54,0.1);
+      border-radius: 10px;
+    }
+
     /* ── Final CTA ─────────────────────────────────────────────── */
     .cta-section {
       background: linear-gradient(135deg, var(--saffron-pale) 0%, var(--cream) 100%);
@@ -847,6 +941,55 @@
     </div>
   </section>
 
+  <!-- ═══ BETA SIGNUP ═══ -->
+  <section class="beta-section" id="beta-signup">
+    <div class="section-inner fade-in">
+      <div class="section-label" data-i18n="betaLabel">JOIN THE BETA</div>
+      <div class="section-title" data-i18n="betaTitle">Be among the first to experience Sangha</div>
+      <div class="section-desc" data-i18n="betaDesc">Sign up for early access. Help us shape the app before public launch.</div>
+
+      <form id="betaForm" class="beta-form" onsubmit="return submitBetaForm(event)">
+        <div class="form-row">
+          <input type="text" id="betaName" placeholder="Your name" data-i18n-placeholder="betaNamePh" required>
+        </div>
+        <div class="form-row">
+          <input type="email" id="betaEmail" placeholder="Email address" data-i18n-placeholder="betaEmailPh" required>
+        </div>
+        <div class="form-row">
+          <input type="tel" id="betaMobile" placeholder="Mobile number (optional)" data-i18n-placeholder="betaMobilePh">
+        </div>
+        <div class="form-row">
+          <div class="device-toggle">
+            <button type="button" class="device-btn active" data-device="android">Android</button>
+            <button type="button" class="device-btn" data-device="ios">iOS</button>
+            <button type="button" class="device-btn" data-device="both" data-i18n="betaBoth">Both</button>
+          </div>
+        </div>
+        <div class="form-row checkbox-row">
+          <label>
+            <input type="checkbox" id="betaConsent" required>
+            <span data-i18n="betaConsent">I agree to be added to the beta testing group</span>
+          </label>
+        </div>
+        <div class="form-row checkbox-row">
+          <label>
+            <input type="checkbox" id="betaUpdates" checked>
+            <span data-i18n="betaUpdates">Send me updates about Sangha</span>
+          </label>
+        </div>
+        <button type="submit" class="btn-cta primary beta-submit" id="betaSubmitBtn">
+          <span data-i18n="betaSubmit">Sign Up for Beta</span>
+        </button>
+        <div id="betaSuccess" class="beta-success" style="display:none;">
+          <span data-i18n="betaSuccessMsg">🪷 Thank you! You'll hear from us soon.</span>
+        </div>
+        <div id="betaError" class="beta-error" style="display:none;">
+          <span data-i18n="betaErrorMsg">Something went wrong. Please try again.</span>
+        </div>
+      </form>
+    </div>
+  </section>
+
   <!-- ═══ FINAL CTA ═══ -->
   <section class="cta-section">
     <div class="section-inner fade-in">
@@ -955,7 +1098,19 @@
         footerLegal: "LEGAL",
         footerPrivacy: "Privacy Policy",
         footerContact: "CONTACT",
-        footerCopy: "\u00A9 2026 Nava Bodhi Sangha. All rights reserved."
+        footerCopy: "\u00A9 2026 Nava Bodhi Sangha. All rights reserved.",
+        betaLabel: "JOIN THE BETA",
+        betaTitle: "Be among the first to experience Sangha",
+        betaDesc: "Sign up for early access. Help us shape the app before public launch.",
+        betaNamePh: "Your name",
+        betaEmailPh: "Email address",
+        betaMobilePh: "Mobile number (optional)",
+        betaBoth: "Both",
+        betaConsent: "I agree to be added to the beta testing group",
+        betaUpdates: "Send me updates about Sangha",
+        betaSubmit: "Sign Up for Beta",
+        betaSuccessMsg: "\ud83e\udef7 Thank you! You\u2019ll hear from us soon.",
+        betaErrorMsg: "Something went wrong. Please try again."
       },
       hi: {
         paliRefuge: "बुद्धं शरणं गच्छामि।",
@@ -1009,7 +1164,19 @@
         footerLegal: "कानूनी",
         footerPrivacy: "गोपनीयता नीति",
         footerContact: "संपर्क",
-        footerCopy: "\u00A9 2026 नवा बोधि संघ। सर्वाधिकार सुरक्षित।"
+        footerCopy: "\u00A9 2026 नवा बोधि संघ। सर्वाधिकार सुरक्षित।",
+        betaLabel: "बीटा में शामिल हों",
+        betaTitle: "संघ का अनुभव करने वाले पहले लोगों में शामिल हों",
+        betaDesc: "अर्ली एक्सेस के लिए साइन अप करें। पब्लिक लॉन्च से पहले ऐप को बेहतर बनाने में हमारी मदद करें।",
+        betaNamePh: "आपका नाम",
+        betaEmailPh: "ईमेल पता",
+        betaMobilePh: "मोबाइल नंबर (वैकल्पिक)",
+        betaBoth: "दोनों",
+        betaConsent: "मैं बीटा टेस्टिंग ग्रुप में शामिल होने के लिए सहमत हूँ",
+        betaUpdates: "मुझे संघ के अपडेट भेजें",
+        betaSubmit: "बीटा के लिए साइन अप करें",
+        betaSuccessMsg: "\ud83e\udef7 धन्यवाद! हम जल्द ही आपसे संपर्क करेंगे।",
+        betaErrorMsg: "कुछ गलत हो गया। कृपया पुनः प्रयास करें।"
       },
       mr: {
         paliRefuge: "बुद्धं शरणं गच्छामि।",
@@ -1063,7 +1230,19 @@
         footerLegal: "कायदेशीर",
         footerPrivacy: "गोपनीयता धोरण",
         footerContact: "संपर्क",
-        footerCopy: "\u00A9 2026 नवा बोधी संघ. सर्व हक्क राखीव."
+        footerCopy: "\u00A9 2026 नवा बोधी संघ. सर्व हक्क राखीव.",
+        betaLabel: "बीटामध्ये सामील व्हा",
+        betaTitle: "संघाचा अनुभव घेणार्\u200dया पहिल्या लोकांमध्ये सामील व्हा",
+        betaDesc: "अर्ली ऍक्सेससाठी साइन अप करा. पब्लिक लॉन्चपूर्वी ऐप सुधारण्यात आम्हाला मदत करा.",
+        betaNamePh: "तुमचे नाव",
+        betaEmailPh: "ईमेल पत्ता",
+        betaMobilePh: "मोबाइल नंबर (पर्यायी)",
+        betaBoth: "दोन्ही",
+        betaConsent: "मी बीटा टेस्टिंग ग्रुपमध्ये सामील होण्यास सहमत आहे",
+        betaUpdates: "मला संघाबद्दल अपडेट पाठवा",
+        betaSubmit: "बीटासाठी साइन अप करा",
+        betaSuccessMsg: "\ud83e\udef7 धन्यवाद! आम्ही लवकरच तुमच्याशी संपर्क साधू.",
+        betaErrorMsg: "काहीतरी चूक झाली. कृपया पुन्हा प्रयत्न करा."
       }
     };
 
@@ -1115,6 +1294,85 @@
     }, { threshold: 0.15 });
 
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // ── Beta form: device toggle ──
+    document.querySelectorAll('.device-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.device-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+
+    // ── Beta form: submit to Supabase ──
+    const SUPABASE_URL = 'https://yitcxebhxvzcepexsnzf.supabase.co';
+    const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlpdGN4ZWJoeHZ6Y2VwZXhzbnpmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIzMzg1OTcsImV4cCI6MjA4NzkxNDU5N30.Gr0ypRW5rD8CbZbHzx3v-tzXdf7deK6sxzf3CQdM5Lg';
+
+    async function submitBetaForm(e) {
+      e.preventDefault();
+      const btn = document.getElementById('betaSubmitBtn');
+      const successEl = document.getElementById('betaSuccess');
+      const errorEl = document.getElementById('betaError');
+      successEl.style.display = 'none';
+      errorEl.style.display = 'none';
+      btn.disabled = true;
+
+      const device = document.querySelector('.device-btn.active')?.getAttribute('data-device') || 'android';
+
+      const payload = {
+        name: document.getElementById('betaName').value.trim(),
+        email: document.getElementById('betaEmail').value.trim(),
+        mobile: document.getElementById('betaMobile').value.trim() || null,
+        device_type: device,
+        tags: ['beta_tester', 'website_signup'],
+        consent_testing: document.getElementById('betaConsent').checked,
+        consent_updates: document.getElementById('betaUpdates').checked,
+        source: 'website'
+      };
+
+      try {
+        const res = await fetch(`${SUPABASE_URL}/rest/v1/contacts`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'apikey': SUPABASE_ANON,
+            'Authorization': `Bearer ${SUPABASE_ANON}`,
+            'Prefer': 'return=minimal'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (res.ok) {
+          successEl.style.display = 'block';
+          document.getElementById('betaForm').reset();
+          document.querySelectorAll('.device-btn').forEach(b => b.classList.remove('active'));
+          document.querySelector('[data-device="android"]').classList.add('active');
+        } else {
+          const err = await res.json();
+          if (err.code === '23505') {
+            successEl.querySelector('[data-i18n]').textContent = 'You\'re already signed up! We\'ll be in touch.';
+            successEl.style.display = 'block';
+          } else {
+            errorEl.style.display = 'block';
+          }
+        }
+      } catch (_) {
+        errorEl.style.display = 'block';
+      }
+      btn.disabled = false;
+      return false;
+    }
+
+    // ── Update placeholders on language change ──
+    const origSetLanguage = setLanguage;
+    setLanguage = function(lang) {
+      origSetLanguage(lang);
+      const strings = T[lang];
+      if (!strings) return;
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (strings[key]) el.placeholder = strings[key];
+      });
+    };
   </script>
 
 </body>
