@@ -333,7 +333,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
-      margin-top: 48px;
+      margin-top: 0;
     }
 
     .feature-card {
@@ -377,6 +377,17 @@
       font-size: 14px;
       color: var(--text-medium);
       line-height: 1.6;
+    }
+
+    .features-hero {
+      display: flex;
+      justify-content: center;
+      margin-top: 48px;
+      margin-bottom: 24px;
+    }
+    .feature-card-hero {
+      max-width: 380px;
+      width: 100%;
     }
 
     /* ── App Showcase ──────────────────────────────────────────── */
@@ -858,7 +869,15 @@
     <div class="section-inner fade-in">
       <div class="section-label" data-i18n="featLabel">Begin Your Journey</div>
       <div class="section-title" data-i18n="featTitle">Everything you need on the path</div>
-      <div class="section-desc" data-i18n="featDesc">Six mindful spaces — each designed to deepen your practice, one moment at a time.</div>
+      <div class="section-desc" data-i18n="featDesc">Seven mindful spaces — each designed to deepen your practice, one moment at a time.</div>
+
+      <div class="features-hero">
+        <div class="feature-card feature-card-hero">
+          <div class="feature-icon" style="background: var(--saffron-pale);"><img src="assets/images/meditation.webp" alt="Meditation Drop"></div>
+          <h3 data-i18n="feat7Title">Meditation Timer</h3>
+          <p data-i18n="feat7Desc">A gentle bell, a floating timer, and stillness — sit with the breath for as long as you need.</p>
+        </div>
+      </div>
 
       <div class="features-grid">
         <div class="feature-card">
@@ -1071,7 +1090,9 @@
         btnGooglePlay: "Google Play",
         featLabel: "BEGIN YOUR JOURNEY",
         featTitle: "Everything you need on the path",
-        featDesc: "Six mindful spaces — each designed to deepen your practice, one moment at a time.",
+        featDesc: "Seven mindful spaces — each designed to deepen your practice, one moment at a time.",
+        feat7Title: "Meditation Timer",
+        feat7Desc: "A gentle bell, a floating timer, and stillness — sit with the breath for as long as you need.",
         feat1Title: "Daily Teachings",
         feat1Desc: "Start each day with a curated teaching from the Buddha and great masters across all traditions.",
         feat2Title: "Wisdom Feed",
@@ -1137,7 +1158,9 @@
         btnGooglePlay: "Google Play",
         featLabel: "अपनी यात्रा शुरू करें",
         featTitle: "मार्ग पर आपको जो कुछ भी चाहिए",
-        featDesc: "छह सचेतन स्थान — प्रत्येक आपकी साधना को गहरा करने के लिए, एक-एक पल करके।",
+        featDesc: "सात सचेतन स्थान — प्रत्येक आपकी साधना को गहरा करने के लिए, एक-एक पल करके।",
+        feat7Title: "ध्यान टाइमर",
+        feat7Desc: "एक कोमल घंटी, एक तैरता टाइमर, और शांति — जब तक चाहें श्वास के साथ बैठें।",
         feat1Title: "दैनिक शिक्षाएँ",
         feat1Desc: "हर दिन की शुरुआत बुद्ध और सभी परंपराओं के महान गुरुओं की चुनी हुई शिक्षा से करें।",
         feat2Title: "बुद्धि फ़ीड",
@@ -1203,7 +1226,9 @@
         btnGooglePlay: "Google Play",
         featLabel: "तुमचा प्रवास सुरू करा",
         featTitle: "मार्गावर तुम्हाला जे काही हवे ते",
-        featDesc: "सहा सजग जागा — प्रत्येक तुमच्या साधनेला खोलवर नेण्यासाठी, एक एक क्षण करत.",
+        featDesc: "सात सजग जागा — प्रत्येक तुमच्या साधनेला खोलवर नेण्यासाठी, एक एक क्षण करत.",
+        feat7Title: "ध्यान टाइमर",
+        feat7Desc: "एक सौम्य घंटा, एक तरंगता टाइमर, आणि शांतता — जोपर्यंत हवे तोपर्यंत श्वासासोबत बसा.",
         feat1Title: "दैनिक शिकवणी",
         feat1Desc: "दररोजची सुरुवात बुद्ध आणि सर्व परंपरांतील महान गुरूंच्या निवडक शिकवणीने करा.",
         feat2Title: "बुद्धि फीड",
